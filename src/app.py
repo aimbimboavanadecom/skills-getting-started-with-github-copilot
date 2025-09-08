@@ -38,6 +38,42 @@ activities = {
         "schedule": "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
         "max_participants": 30,
         "participants": ["john@mergington.edu", "olivia@mergington.edu"]
+        },
+        "Soccer Team": {
+            "description": "Allenamenti e partite di calcio scolastico",
+            "schedule": "Martedì e Giovedì, 16:00 - 17:30",
+            "max_participants": 22,
+            "participants": []
+        },
+        "Basketball Club": {
+            "description": "Allenamenti e tornei di basket",
+            "schedule": "Lunedì e Venerdì, 15:00 - 16:30",
+            "max_participants": 15,
+            "participants": []
+        },
+        "Art Workshop": {
+            "description": "Laboratorio di pittura e disegno creativo",
+            "schedule": "Mercoledì, 16:00 - 17:30",
+            "max_participants": 10,
+            "participants": []
+        },
+        "Drama Club": {
+            "description": "Recitazione, improvvisazione e spettacoli teatrali",
+            "schedule": "Giovedì, 15:30 - 17:00",
+            "max_participants": 18,
+            "participants": []
+        },
+        "Math Olympiad": {
+            "description": "Preparazione e partecipazione a gare di matematica",
+            "schedule": "Martedì, 17:00 - 18:00",
+            "max_participants": 12,
+            "participants": []
+        },
+        "Science Club": {
+            "description": "Esperimenti scientifici e discussioni su temi STEM",
+            "schedule": "Venerdì, 16:00 - 17:00",
+            "max_participants": 16,
+            "participants": []
     }
 }
 
@@ -63,5 +99,8 @@ def signup_for_activity(activity_name: str, email: str):
     activity = activities[activity_name]
 
     # Add student
+    # Verifica che lo studente non sia già iscritto
+    if email in activity["participants"]:
+        return f"{email} è già iscritto a questa attività."
     activity["participants"].append(email)
     return {"message": f"Signed up {email} for {activity_name}"}
